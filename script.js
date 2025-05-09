@@ -1,4 +1,4 @@
 
 function showMessage() {
-  document.getElementById("message").textContent = "Thank you for reaching out!";
+  document.getElementById("message").textContent = "Email: p_art@piyush_gmail.com";
 }
