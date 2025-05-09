@@ -1,0 +1,17 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
