@@ -1,8 +1,12 @@
+html {
+  background-color: lightblue;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: lightblue;
   color: #333;
 }
 
@@ -28,6 +32,9 @@ nav a: hover {
 h1 {
   font-size: 2rem;
   color: #222;
+  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  width: 400px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -65,3 +72,4 @@ button: hover {
   color: #0077cc;
   font-weight: bold;
 }
+
