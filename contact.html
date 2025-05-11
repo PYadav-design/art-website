@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
   <link href="css/style.css" rel="stylesheet" />
-   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/contact.css" />
+  <style>
+    #contactForm {
+      display: none;
+    }
+
+    .dropdown-toggle {
+      background-color: #0056b3;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .dropdown-toggle:hover {
+      background-color: #004099;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -14,13 +36,14 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-
   <div class="container">
     <h1>My contact information</h1>
     <img src="senior year picture day.jpg" alt="Senior Artist" />
     <p>Email: pgn43mlg@gmail.com</p>
     <p>Art Instagram: mr.pineaxeart</p>
   </div>
+
+  <button class="dropdown-toggle" onclick="toggleForm()">Show Contact Form</button>
 
   <form id="contactForm">
     <label for="name">Name:</label><br />
@@ -36,16 +59,29 @@
   </form>
 
   <script>
+    function toggleForm() {
+      const form = document.getElementById('contactForm');
+      const toggleBtn = document.querySelector('.dropdown-toggle');
+      if (form.style.display === "none") {
+        form.style.display = "block";
+        toggleBtn.textContent = "Hide Contact Form";
+      } else {
+        form.style.display = "none";
+        toggleBtn.textContent = "Show Contact Form";
+      }
+    }
+
     document.getElementById('contactForm').addEventListener('submit', function(event) {
       event.preventDefault(); 
       const message = document.getElementById('message').value;
 
       const mailtoLink = `mailto:pgn43mlg@gmail.com?body=${encodeURIComponent(message)}`;
 
-      window. location.href = mailtoLink;
+      window.location.href = mailtoLink;
     });
   </script>
 </body>
 </html>
+
 
 
