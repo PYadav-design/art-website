@@ -17,12 +17,12 @@
 
   <div class="container">
     <h1>My contact information</h1>
-    <img src="senior year picture day.jpg" alt=" Senior Artist" />
-    <p>email: pgn43mlg@gmail.com
-       Art Instagram: mr.pineaxeart </p>
+    <img src="senior year picture day.jpg" alt="Senior Artist" />
+    <p>Email: pgn43mlg@gmail.com</p>
+    <p>Art Instagram: mr.pineaxeart</p>
   </div>
 
-  <form action="mailto: pgn43mlg@gmail.com" method="post" enctype="text/plain">
+  <form id="contactForm">
     <label for="name">Name:</label><br />
     <input type="text" id="name" name="name" required><br /><br />
 
@@ -35,7 +35,15 @@
     <button type="submit">Send</button>
   </form>
 
-  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      const message = document.getElementById('message').value;
+
+      const mailtoLink = `mailto:pgn43mlg@gmail.com?body=${encodeURIComponent(message)}`;
+
+      window. location.href = mailtoLink;
+    });
+  </script>
 </body>
 </html>
-
