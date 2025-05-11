@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 body {
-  font-family: 'Montserrat', Oswald;
+  font-family: 'Oswald', 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f0f8ff; 
@@ -9,15 +11,15 @@ body {
 
 nav {
   text-align: center;
-  background-color: #0056b3; /* Matching nav color */
+  background-color: #0056b3; 
   padding: 15px 0;
   margin-bottom: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 10px 10px;
 }
 
 nav a {
-  color: #ffffff; /* White text for contrast */
+  color: #ffffff;
   margin: 0 20px;
   font-weight: bold;
   text-decoration: none;
