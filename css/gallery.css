@@ -27,7 +27,7 @@ nav a {
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-nav a: hover {
+nav a:hover {
   color: #ffcc00; 
   transform: scale(1.1);
 }
@@ -60,7 +60,7 @@ figure {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-figure: hover {
+figure:hover {
   transform: scale(1.05); 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -76,4 +76,31 @@ figcaption {
   font-size: 1rem;
   text-align: center;
   color: #555; 
+}
+
+details {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+summary {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+details[open] summary {
+  color: #0056b3; /* Change color when open */
+}
+
+details p {
+  margin-top: 10px;
+  transition: max-height 0.3s ease;
+}
+
+figcaption details {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
