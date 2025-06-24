@@ -52,7 +52,7 @@ h1 {
 
 figure {
   width: 100%;
-  max-width: 300px; /* Ensures figures don't exceed this width */
+  max-width: 300px; 
   border: 1px solid #ccc;
   border-radius: 10px; 
   overflow: hidden;
@@ -91,7 +91,7 @@ summary {
 }
 
 details[open] summary {
-  color: #0056b3; /* Change color when open */
+  color: #0056b3; 
 }
 
 details p {
@@ -106,7 +106,6 @@ figcaption details {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .gallery {
     flex-direction: column;
@@ -114,6 +113,39 @@ figcaption details {
   }
 
   figure {
-    width: 90%; /* Adjust width for smaller screens */
+    width: 90%;
   }
+}
+
+.art-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.art-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.art-card:hover {
+  transform: scale(1.02);
+}
+
+.art-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.art-card details summary {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 0;
 }
