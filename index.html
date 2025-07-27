@@ -4,7 +4,226 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artist Home</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Oswald', 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f0f8ff;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      text-align: center;
+      background-color: #0056b3;
+      padding: 15px 0;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 10px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+      transform: scale(1.1);
+    }
+
+    /* ===== Container ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== Headings ===== */
+    h1 {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    /* ===== Images ===== */
+    .artist-images {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .artist-images img {
+      max-width: 300px;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .artist-images img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===== Text Content ===== */
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+      margin: 30px 0;
+      text-align: justify;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #0056b3;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    /* ===== Lightbox Modal ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+      .container {
+        margin: 0 15px;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        margin: 0 15px;
+        font-size: 0.9rem;
+      }
+
+      .artist-images {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .artist-images img {
+        max-width: 280px;
+        height: 280px;
+      }
+
+      p {
+        font-size: 1rem;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        margin: 0 10px;
+        font-size: 0.85rem;
+      }
+
+      .artist-images img {
+        max-width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -12,21 +231,86 @@
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
   </nav>
-
+  
   <div class="container">
     <h1>Welcome to Piyush's Art Portfolio</h1>
-    <img src="fbla picture.jpg" alt="Artist" />
-    <img src="me at washinton copy.jpg" alt=" Casual Artist" />
-    <p>Hello, I am Piyush Yadav, welcome to my art portfolio! Within the next few pages, you’ll discover a great selection of my finest art pieces, each crafted with passion and creativity over the years.
+    
+    <div class="artist-images">
+      <img src="fbla picture.jpg" alt="Piyush Yadav - Professional Artist Portrait" onclick="openLightbox(this.src, this.alt)" />
+      <img src="me at washinton copy.jpg" alt="Piyush Yadav - Casual Artist Portrait" onclick="openLightbox(this.src, this.alt)" />
+    </div>
+    
+    <p>
+      Hello, I am Piyush Yadav, welcome to my art portfolio! Within the next few pages, you'll discover a great selection of my finest art pieces, each crafted with passion and creativity over the years.
       I invite you to explore the vibrant colors, intricate details, and unique styles that reflect my artistic journey. Thank you for visiting, and I hope you find it inspiring. 
-      Please leave your feedback on the contact form. </p>
+      Please leave your feedback on the contact form.
+    </p>
   </div>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </div>
+  
   <footer>
     <p>© 2025 Piyush Yadav. All rights reserved.</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    // Lightbox functionality
+    function openLightbox(imgSrc, imgAlt) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = imgAlt;
+      lightbox.classList.add('active');
+      
+      // Prevent body scrolling when lightbox is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      
+      // Restore body scrolling
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close lightbox when clicking outside the image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Error handling for missing images
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.artist-images img');
+      images.forEach(img => {
+        img.addEventListener('error', function() {
+          this.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+          this.style.display = 'flex';
+          this.style.alignItems = 'center';
+          this.style.justifyContent = 'center';
+          this.style.color = '#666';
+          this.style.fontSize = '1rem';
+          this.textContent = 'Image not available';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
