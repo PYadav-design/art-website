@@ -50,6 +50,21 @@ h1 {
   position: relative;
 }
 
+/* === ADDED COLORFUL SECTION DIVIDERS BASED ON CATEGORY === */
+.category.digital h2::after {
+  background-color: #0099cc; /* digital design */
+}
+.category.sketch h2::after {
+  background-color: #333333; /* black and white sketch */
+}
+.category.popart h2::after {
+  background-color: #ff3366; /* pop art */
+}
+.category.material h2::after {
+  background-color: #339933; /* physical material */
+}
+
+/* === DEFAULT section divider (fallback) === */
 .category h2::after {
   content: "";
   display: block;
@@ -93,103 +108,4 @@ figure:hover {
   transition: transform 0.3s ease;
 }
 
-figure:hover img {
-  transform: scale(1.03);
-}
-
-figcaption {
-  padding: 12px;
-  font-size: 1rem;
-  text-align: center;
-  color: #333;
-  font-weight: 500;
-}
-
-/* === Expandable Details Box === */
-details {
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-summary {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-details[open] summary {
-  color: #0056b3;
-}
-
-details p {
-  margin-top: 10px;
-  transition: max-height 0.3s ease;
-}
-
-figcaption details {
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* === Responsive Layout === */
-@media (max-width: 768px) {
-  .gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  figure {
-    width: 90%;
-  }
-
-  nav {
-    flex-direction: column;
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-  }
-}
-
-/* === Section Container Spacing === */
-.category {
-  margin: 60px auto;
-  max-width: 1200px;
-}
-
-/* === Art Card Class (Optional Section, kept for reuse) === */
-.art-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.art-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 15px;
-  width: 300px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.art-card:hover {
-  transform: scale(1.02);
-}
-
-.art-card img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.art-card details summary {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 10px 0;
-}
+figure:hover img
