@@ -154,37 +154,34 @@ max-width: 1200px;
 }
 
 /* === Responsive Grid Layout for Art Cards === */
-.art-gallery {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 30px;
-padding: 20px;
-justify-items: center;
-align-items: start;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 }
 
 .art-card {
-background: white;
-border-radius: 12px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-padding: 15px;
-width: 100%;
-max-width: 300px;
-text-align: center;
-transition: transform 0.3s ease;
-}
-
-.art-card:hover {
-transform: scale(1.02);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.2s ease;
 }
 
 .art-card img {
-width: 100%;
-border-radius: 8px;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.art-card details summary {
-cursor: pointer;
-font-weight: bold;
-padding: 10px 0;
+.art-card details {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.art-card summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
