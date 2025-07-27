@@ -6,6 +6,32 @@
   <title>Gallery</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/gallery.css" />
+  <style>
+    h2 {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    .section-divider {
+      height: 6px;
+      width: 80%;
+      margin: 20px auto 40px;
+      border-radius: 3px;
+    }
+
+    .divider-digital { background-color: #4a90e2; }
+    .divider-sketch { background-color: #888; }
+    .divider-pop { background-color: #f54291; }
+    .divider-physical { background-color: #9b59b6; }
+
+    .gallery {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -14,13 +40,13 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <h1>Gallery</h1>
+  <h1 style="text-align: center;">Gallery</h1>
 
-    <div class="gallery"><!-- ✅ Wrap all gallery sections -->
+  <div class="gallery">
 
-  <!-- ✅ DIGITAL DESIGN -->
-  <h2>Digital Design</h2>
-  <div class="art-gallery">
+    <h2>Digital Design</h2>
+    <div class="section-divider divider-digital"></div>
+    <div class="art-gallery">
     <div class="art-card">
       <img src="lloyds v3.png" alt="Two Green Ninjas" />
       <details>
@@ -76,9 +102,9 @@
     </div>
   </div>
 
-  <!-- ✅ BLACK AND WHITE SKETCH -->
-  <h2>Black & White Sketch</h2>
-  <div class="art-gallery">
+ <h2>Black & White Sketch</h2>
+    <div class="section-divider divider-sketch"></div>
+    <div class="art-gallery">
     <div class="art-card">
       <img src="turtle drawing black and white tmnt.jpg" alt="Noir Wooden Raphael" />
       <details>
@@ -116,23 +142,26 @@
     </div>
   </div>
 
-  <!-- ✅ POP ART -->
-  <h2>Pop Art</h2>
-  <div class="art-gallery">
-    <div class="art-card">
-      <img src="nike jordans artwork v2.jpg" alt="Nike Jordans OG" />
-      <details>
-        <summary><strong>Nike Jordans OG</strong></summary>
+
+  <!-- Pop Art Section -->
+    <h2>Pop Art</h2>
+    <div class="section-divider divider-pop"></div>
+    <div class="art-gallery">
+      <div class="art-card">
+        <img src="nike jordans artwork v2.jpg" alt="Nike Jordans OG" />
+        <details>
+          <summary><strong>Nike Jordans OG</strong></summary>
         <p>This artwork is a study in pop art culture, where I highlight my oil pastel skills featuring the Nike Air Jordans 1 against a vibrant nature background. Using a palette of deep reds, bright blues, lush greens, warm oranges, and sunny yellows, I blended colors to capture the essence of these culturally iconic shoes.
           While applying line mark-making to further elevate it in being creative and iconic to Michael Jordan. The striking visuals reflect both their bold design and their connection to urban culture, dynamically bridging fashion and art, which reflects my skill in designing pop art while being detailed in my art.
 
 </p>
       </details>
     </div>
-    <div class="art-card">
-      <img src="deadpool sketchbook.png" alt="Deadpool Sketch" />
-      <details>
-        <summary><strong>Deadpool Sketch</strong></summary>
+      
+   <div class="art-card">
+        <img src="deadpool sketchbook.png" alt="Deadpool Sketch" />
+        <details>
+          <summary><strong>Deadpool Sketch</strong></summary>
         <p>This sketch is inspired by the 2024 film "Deadpool & Wolverine," capturing the vibrant and chaotic essence of the mercenary. I used a bold color palette infused with bright hues, particularly splashes of yellow, to symbolize Deadpool's playful unpredictability. 
           Through color grading with colored pencils, I created depth and nuance, especially in the lively background. This approach showcases my skills in detailed character illustration and my appreciation for traditional drawing techniques and comic book art. Overall, the piece reflects the energetic spirit of the characters while highlighting my artistic abilities in creating a vibrant sketch.
 
@@ -157,23 +186,22 @@
     </div>
   </div>
 
-  <!-- ✅ PHYSICAL MATERIAL -->
-  <h2>Physical Material</h2>
-  <div class="art-gallery">
-    <div class="art-card">
-      <img src="Aztec animals.jpg" alt="Aztec Animals" />
-      <details>
-        <summary><strong>Aztec Animals</strong></summary>
-        <p>This piece showcases my application of the repousse technique on aluminum, where I skillfully pushed and shaped the material to create designs inspired by various Aztec animals and birds. To enhance the work, I coated the aluminum with black acrylic paint and gently buffed it with a damp cloth, allowing for the intricate details to stand out. 
-          This finishing touch not only elevated the piece but also connected it more closely to the rich artistic culture of the Aztecs. Through this artwork, I demonstrate my ability to manipulate physical materials to create truly unique creations.
-
-</p>
-      </details>
+  <!-- Physical Material Section -->
+    <h2>Physical Material</h2>
+    <div class="section-divider divider-physical"></div>
+    <div class="art-gallery">
+      <div class="art-card">
+        <img src="Aztec animals.jpg" alt="Aztec Animals" />
+        <details>
+          <summary><strong>Aztec Animals</strong></summary>
+          <p>This piece showcases my application of the repousse technique on aluminum...</p>
+        </details>
+      </div>
     </div>
+
   </div>
 
   <script src="js/script.js"></script>
 </body>
 </html>
-
 
