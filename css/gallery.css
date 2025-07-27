@@ -1,159 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 body {
-font-family: 'Oswald', 'Montserrat', sans-serif;
-margin: 0;
-padding: 0;
-background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
-color: #333;
-line-height: 1.6;
+  font-family: 'Oswald', 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
+  color: #333;
+  line-height: 1.6;
 }
 
 nav {
-text-align: center;
-background-color: #0056b3;
-padding: 15px 0;
-margin-bottom: 30px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-border-radius: 0 0 10px 10px;
+  text-align: center;
+  background-color: #0056b3;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
 }
 
 nav a {
-color: #ffffff;
-margin: 0 20px;
-font-weight: bold;
-text-decoration: none;
-font-size: 1rem;
-transition: color 0.3s ease, transform 0.2s ease;
+  color: #ffffff;
+  margin: 0 20px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-color: #ffcc00;
-transform: scale(1.1);
+  color: #ffcc00;
+  transform: scale(1.1);
 }
 
 h1 {
-text-align: center;
-margin-top: 20px;
-font-size: 2.5rem;
-color: #222;
-font-weight: 600;
-margin-bottom: 20px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 /* === Category Headings === */
 .category h2 {
-font-size: 2rem;
-color: #003366;
-text-align: center;
-margin-bottom: 30px;
-position: relative;
+  font-size: 2rem;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
 }
 
 /* === Colored Section Dividers === */
 .category.digital h2::after {
-background-color: #0099cc;
+  background-color: #0099cc;
 }
 .category.sketch h2::after {
-background-color: #333333;
+  background-color: #333333;
 }
 .category.popart h2::after {
-background-color: #ff3366;
+  background-color: #ff3366;
 }
 .category.material h2::after {
-background-color: #339933;
+  background-color: #339933;
 }
 
 .category h2::after {
-content: "";
-display: block;
-width: 60px;
-height: 4px;
-background-color: #004080;
-margin: 10px auto 0;
-border-radius: 2px;
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #004080;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
-/* === Gallery and Cards === */
-.gallery {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: flex-start;
-gap: 20px;
-padding: 20px;
-}
-
-.gallery img {
-width: 100%;
-height: auto;
-display: block;
-transition: transform 0.3s ease;
-}
-
-figure {
-position: relative;
-width: 100%;
-max-width: 300px;
-border-radius: 12px;
-overflow: hidden;
-background-color: white;
-box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-figure:hover {
-transform: translateY(-8px);
-box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-figure:hover img {
-transform: scale(1.03);
-}
-
-figcaption {
-padding: 12px;
-font-size: 1rem;
-text-align: center;
-color: #333;
-font-weight: 500;
-}
-
-/* === Expandable Details Box === */
-details {
-cursor: pointer;
-margin-top: 10px;
-}
-
-summary {
-font-weight: bold;
-color: #333;
-margin-bottom: 5px;
-}
-
-details[open] summary {
-color: #0056b3;
-}
-
-details p {
-margin-top: 10px;
-transition: max-height 0.3s ease;
-}
-
-figcaption details {
-padding: 10px;
-background-color: #f9f9f9;
-border-radius: 5px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* === Section Container Spacing === */
-.category {
-margin: 60px auto;
-max-width: 1200px;
-}
-
-/* === Responsive Grid Layout for Art Cards === */
+/* === Responsive Grid Layout for Gallery === */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -161,6 +82,76 @@ max-width: 1200px;
   padding: 20px 0;
 }
 
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+figure {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+figure:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+figure:hover img {
+  transform: scale(1.03);
+}
+
+figcaption {
+  padding: 12px;
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+}
+
+/* === Expandable Details Box === */
+details {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+summary {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+details[open] summary {
+  color: #0056b3;
+}
+
+details p {
+  margin-top: 10px;
+  transition: max-height 0.3s ease;
+}
+
+figcaption details {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* === Section Container Spacing === */
+.category {
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+/* === Optional: Art-card styling (if used) === */
 .art-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -185,3 +176,4 @@ max-width: 1200px;
   font-weight: bold;
   margin-bottom: 5px;
 }
+
