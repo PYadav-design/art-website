@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    
     * {
       margin: 0;
       padding: 0;
@@ -12,41 +14,44 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Oswald', 'Montserrat', sans-serif;
       line-height: 1.6;
       color: #333;
-      background-color: #f8f9fa;
+      background-color: #f0f8ff;
     }
 
     nav {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 1rem 0;
+      text-align: center;
+      background-color: #0056b3;
+      padding: 15px 0;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 10px 10px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     nav a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       margin: 0 20px;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
     nav a:hover {
-      color: #ffd700;
+      color: #ffcc00;
+      transform: scale(1.1);
     }
 
     h1 {
       text-align: center;
-      font-size: 3rem;
-      margin: 40px 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 2.5rem;
+      color: #222;
+      margin: 40px 0 20px 0;
+      font-weight: 600;
     }
 
     .gallery {
@@ -87,17 +92,17 @@
       min-width: 350px;
       max-width: 350px;
       flex-shrink: 0;
-      border: 1px solid #e0e0e0;
-      border-radius: 16px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
       overflow: hidden;
-      background-color: #fff;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: #ffffff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .art-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
     }
 
     .art-card img {
@@ -105,25 +110,31 @@
       height: 240px;
       object-fit: cover;
       display: block;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
     .art-card:hover img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     .art-card details {
-      padding: 20px;
-      background-color: #fff;
+      padding: 15px;
+      font-family: 'Oswald', 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 10px;
     }
 
     .art-card summary {
       cursor: pointer;
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #2c3e50;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
       outline: none;
+      font-size: 1.2rem;
       transition: color 0.3s ease;
       list-style: none;
     }
@@ -145,23 +156,26 @@
     }
 
     .art-card details[open] summary {
-      color: #667eea;
+      color: #0056b3;
     }
 
     .art-card summary:hover {
-      color: #667eea;
+      color: #0056b3;
     }
 
     .art-card p {
-      line-height: 1.8;
-      color: #555;
-      margin-top: 12px;
+      line-height: 1.7;
+      color: #444;
+      margin-top: 10px;
+      transition: max-height 0.3s ease;
       font-size: 0.95rem;
       text-align: justify;
     }
 
     .category {
       margin: 80px auto;
+      max-width: 1200px;
+      padding: 0 20px;
       position: relative;
     }
 
@@ -169,7 +183,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(102, 126, 234, 0.9);
+      background: rgba(0, 86, 179, 0.8);
       color: white;
       border: none;
       border-radius: 50%;
@@ -184,12 +198,12 @@
     }
 
     .scroll-arrow:hover {
-      background: rgba(102, 126, 234, 1);
+      background: rgba(0, 86, 179, 1);
       transform: translateY(-50%) scale(1.1);
     }
 
     .scroll-arrow:focus {
-      outline: 2px solid #ffd700;
+      outline: 2px solid #ffcc00;
       outline-offset: 2px;
     }
 
@@ -207,39 +221,39 @@
     }
 
     .category h2 {
-      font-size: 2.5rem;
-      color: #2c3e50;
+      font-size: 2.2rem;
+      color: #003366;
       text-align: center;
       margin-bottom: 40px;
       position: relative;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .category h2::after {
       content: "";
       display: block;
-      width: 80px;
+      width: 60px;
       height: 4px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      margin: 15px auto 0;
+      background-color: #004080;
+      margin: 10px auto 0;
       border-radius: 2px;
     }
 
     .category.digital h2::after {
-      background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+      background-color: #0099cc;
     }
 
     .category.sketch h2::after {
-      background: linear-gradient(135deg, #434343 0%, #000000 100%);
+      background-color: #333333;
     }
 
     .category.popart h2::after {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      background-color: #ff3366;
     }
 
     .category.material h2::after {
-      background: linear-gradient(135deg, #55a3ff 0%, #003d82 100%);
+      background-color: #339933;
     }
 
     .coming-soon {
@@ -330,6 +344,86 @@
       background-size: 200px 100%;
       animation: shimmer 1.5s infinite;
     }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    .lightbox-info {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Make images clickable */
+    .art-card img {
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .art-card img:hover {
+      filter: brightness(1.1);
+    }
   </style>
 </head>
 <body>
@@ -409,7 +503,7 @@
     </div>
 
     <div class="category sketch">
-      <h2>Black & White</h2>
+      <h2>Black & White Sketch</h2>
       <button class="scroll-arrow left" onclick="scrollGallery(this, -1)" aria-label="Scroll left">‹</button>
       <button class="scroll-arrow right" onclick="scrollGallery(this, 1)" aria-label="Scroll right">›</button>
       <div class="art-gallery">
