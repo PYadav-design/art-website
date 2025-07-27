@@ -4,14 +4,14 @@ body {
   font-family: 'Oswald', 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f8ff; 
-  color: #333; 
+  background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
+  color: #333;
   line-height: 1.6;
 }
 
 nav {
   text-align: center;
-  background-color: #0056b3; 
+  background-color: #0056b3;
   padding: 15px 0;
   margin-bottom: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -28,19 +28,39 @@ nav a {
 }
 
 nav a:hover {
-  color: #ffcc00; 
+  color: #ffcc00;
   transform: scale(1.1);
 }
 
 h1 {
   text-align: center;
   margin-top: 20px;
-  font-size: 2.5rem; 
-  color: #222; 
+  font-size: 2.5rem;
+  color: #222;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
+/* === Category Headings === */
+.category h2 {
+  font-size: 2rem;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.category h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #004080;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* === Gallery and Cards === */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -51,34 +71,41 @@ h1 {
 }
 
 figure {
+  position: relative;
   width: 100%;
-  max-width: 300px; 
-  border: 1px solid #ccc;
-  border-radius: 10px; 
+  max-width: 300px;
+  border-radius: 12px;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 figure:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
 .gallery img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+figure:hover img {
+  transform: scale(1.03);
 }
 
 figcaption {
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
   text-align: center;
-  color: #555; 
+  color: #333;
+  font-weight: 500;
 }
 
+/* === Expandable Details Box === */
 details {
   cursor: pointer;
   margin-top: 10px;
@@ -91,7 +118,7 @@ summary {
 }
 
 details[open] summary {
-  color: #0056b3; 
+  color: #0056b3;
 }
 
 details p {
@@ -106,6 +133,7 @@ figcaption details {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* === Responsive Layout === */
 @media (max-width: 768px) {
   .gallery {
     flex-direction: column;
@@ -115,8 +143,24 @@ figcaption details {
   figure {
     width: 90%;
   }
+
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
 }
 
+/* === Section Container Spacing === */
+.category {
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+/* === Art Card Class (Optional Section, kept for reuse) === */
 .art-gallery {
   display: flex;
   flex-wrap: wrap;
