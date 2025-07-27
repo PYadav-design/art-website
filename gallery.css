@@ -74,32 +74,23 @@ figcaption {
 /* Category Section Styling */
 .category {
   margin: 40px 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
 }
 
 .category h2 {
-  font-size: 28px;
+  font-size: 32px;
   color: #003366;
   text-align: center;
+  margin-top: 60px;
   margin-bottom: 20px;
   border-bottom: 2px solid #004080;
   padding-bottom: 10px;
 }
 
-.category .art-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* Center all h2 section headings */
-.gallery h2 {
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-}
+/* Removed duplicate .gallery h2 — category h2 now handles all headings */
 
 /* Responsive */
 @media (max-width: 768px) {
