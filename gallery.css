@@ -92,6 +92,15 @@ figcaption {
   gap: 20px;
 }
 
+/* Center all h2 section headings */
+.gallery h2 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .art-gallery {
