@@ -7,6 +7,37 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/gallery.css" />
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ddd;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5rem;
+      color: #333;
+    }
+
     h2 {
       text-align: center;
       margin-top: 60px;
@@ -31,6 +62,103 @@
       margin: auto;
       padding: 20px;
     }
+
+    .art-gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 25px;
+      padding: 20px 0;
+      margin-bottom: 60px;
+      scroll-behavior: smooth;
+    }
+
+    .art-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .art-gallery::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .art-gallery::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 10px;
+    }
+
+    .art-gallery::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a1;
+    }
+
+    .art-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-width: 320px;
+      max-width: 320px;
+      flex-shrink: 0;
+    }
+
+    .art-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .art-card details {
+      padding: 20px;
+    }
+
+    .art-card summary {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
+      outline: none;
+    }
+
+    .art-card summary:hover {
+      color: #4a90e2;
+    }
+
+    .art-card p {
+      line-height: 1.6;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .art-card summary strong {
+      font-weight: bold;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .art-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -40,110 +168,104 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <h1 style="text-align: center;">Gallery</h1>
+  <h1>Gallery</h1>
 
   <div class="gallery">
 
     <h2>Digital Design</h2>
     <div class="section-divider divider-digital"></div>
     <div class="art-gallery">
-    <div class="art-card">
-      <img src="lloyds v3.png" alt="Two Green Ninjas" />
-      <details>
-        <summary><strong>Two Green Ninjas</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-    
-    <div class="art-card">
-      <img src="berlin postcard.jpg" alt="Berlin Postcard" />
-      <details>
-        <summary><strong>Berlin Postcard</strong></summary>
-        <p>This digital design presents a postcard of Berlin, showcasing my graphic design skills through capturing iconic landmarks in the world. The cityscape highlights notable landmarks and captures the essence of Berlin through an orange-hued artistic lens. 
-          While the landmarks remain recognizable, through the application of color grading, photo manipulation, and digital illustration, done in Adobe Photoshop and Illustrator, the design effectively merges historical and contemporary elements, demonstrating my proficiency with digital tools.
-</p>
-      </details>
-    </div>
+      <div class="art-card">
+        <img src="lloyds v3.png" alt="Two Green Ninjas" />
+        <details>
+          <summary><strong>Two Green Ninjas</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
       
-    <div class="art-card">
-      <img src="the lego batman.png" alt="A symbol out of the shadows" />
-      <details>
-        <summary><strong>A symbol out of the shadows</strong></summary>
-        <p>This design is inspired by the 2022 film, The Batman, and explores the contrast between lurking in the shadows and confronting harsh realities. 
-          The dark figure set against a vivid red background symbolizes the struggles many individuals face when they hide their true selves. I emphasized applying light and dark gradients while creating a paper effect on the design through Adobe Photoshop to further elevate the meaning. This piece showcases my skills in graphic design, demonstrating my proficiency in digital design and composition through 2D elements in Adobe Photoshop.
-</p>
-      </details>
-    </div>
-    
-    <div class="art-card">
-      <img src="Curry poster.png" alt="Stephen Curry" />
-      <details>
-        <summary><strong>Stephen Curry</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-    
-    <div class="art-card">
-         <img src="miles atsv art comic.png" alt="Spider-Man in the spots void" />
-      <details>
-        <summary><strong>Spider-Man in the spots void</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-    <div class="art-card">
-      <img src="a6ce2810-058b-48f9-8a08-6b2a65bf5f3e.1280x1280.jpg" alt="Reach the sky" />
-      <details>
-        <summary><strong>Reach the sky</strong></summary>
-        <p>This design highlights my expertise in digital illustration and typography. The gradient background, derived from a soft pastel artwork, transitions from blue to orange, symbolizing the sunset and sky, which conveys the endless possibilities that lie ahead. The silhouetted figure with arms raised represents triumph and aspiration.
-          By blending gradients and creating silhouettes, I draw inspiration from my soft pastel pieces. This approach showcases my ability to reference other materials while effectively working with digital mediums like Adobe Illustrator to create compelling digital artwork.
+      <div class="art-card">
+        <img src="berlin postcard.jpg" alt="Berlin Postcard" />
+        <details>
+          <summary><strong>Berlin Postcard</strong></summary>
+          <p>This digital design presents a postcard of Berlin, showcasing my graphic design skills through capturing iconic landmarks in the world. The cityscape highlights notable landmarks and captures the essence of Berlin through an orange-hued artistic lens. 
+            While the landmarks remain recognizable, through the application of color grading, photo manipulation, and digital illustration, done in Adobe Photoshop and Illustrator, the design effectively merges historical and contemporary elements, demonstrating my proficiency with digital tools.</p>
+        </details>
+      </div>
+        
+      <div class="art-card">
+        <img src="the lego batman.png" alt="A symbol out of the shadows" />
+        <details>
+          <summary><strong>A symbol out of the shadows</strong></summary>
+          <p>This design is inspired by the 2022 film, The Batman, and explores the contrast between lurking in the shadows and confronting harsh realities. 
+            The dark figure set against a vivid red background symbolizes the struggles many individuals face when they hide their true selves. I emphasized applying light and dark gradients while creating a paper effect on the design through Adobe Photoshop to further elevate the meaning. This piece showcases my skills in graphic design, demonstrating my proficiency in digital design and composition through 2D elements in Adobe Photoshop.</p>
+        </details>
+      </div>
+      
+      <div class="art-card">
+        <img src="Curry poster.png" alt="Stephen Curry" />
+        <details>
+          <summary><strong>Stephen Curry</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
+      
+      <div class="art-card">
+        <img src="miles atsv art comic.png" alt="Spider-Man in the spots void" />
+        <details>
+          <summary><strong>Spider-Man in the spots void</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
 
-</p>
-      </details>
+      <div class="art-card">
+        <img src="a6ce2810-058b-48f9-8a08-6b2a65bf5f3e.1280x1280.jpg" alt="Reach the sky" />
+        <details>
+          <summary><strong>Reach the sky</strong></summary>
+          <p>This design highlights my expertise in digital illustration and typography. The gradient background, derived from a soft pastel artwork, transitions from blue to orange, symbolizing the sunset and sky, which conveys the endless possibilities that lie ahead. The silhouetted figure with arms raised represents triumph and aspiration.
+            By blending gradients and creating silhouettes, I draw inspiration from my soft pastel pieces. This approach showcases my ability to reference other materials while effectively working with digital mediums like Adobe Illustrator to create compelling digital artwork.</p>
+        </details>
+      </div>
     </div>
-  </div>
 
- <h2>Black & White Sketch</h2>
+    <h2>Black & White Sketch</h2>
     <div class="section-divider divider-sketch"></div>
     <div class="art-gallery">
-    <div class="art-card">
-      <img src="turtle drawing black and white tmnt.jpg" alt="Noir Wooden Raphael" />
-      <details>
-        <summary><strong>Noir Wooden Raphael</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-    <div class="art-card">
-      <img src="black and white glass of water.png" alt="Noir Style Glass of Water" />
-      <details>
-        <summary><strong>Noir Style Glass of Water</strong></summary>
-        <p>This piece is a study of a white charcoal drawing, depicting a glass of water with visible bubbles and reflections against a dark background. The contrast between the bright, detailed glass and the dark backdrop highlights the play of light and shadow, creating a serene atmosphere. 
-          Which I implemented through shading, reflection rendering, contrast enhancement with blending the white charcoal. This artwork demonstrates my proficiency with charcoal as a medium and my ability to capture intricate details and subtle lighting effects.
+      <div class="art-card">
+        <img src="turtle drawing black and white tmnt.jpg" alt="Noir Wooden Raphael" />
+        <details>
+          <summary><strong>Noir Wooden Raphael</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
 
-</p>
-      </details>
-    </div>
-    <div class="art-card">
-      <img src="city drawing.png" alt="City with Potential" />
-      <details>
-        <summary><strong>City with Potential</strong></summary>
-        <p>This piece is a part of a series of custom cityscape drawings, showcasing my skills in abstract and sketch-style art. The use of geometric shapes and varied perspectives aims to create a very visually engaging and abstract representation of urban environments, through the use of graphite pencils and blending sticks. 
-          The shading, line work, and perspective drawing inspiration: The distorted and fragmented appearance is inspired by Cubism and the dynami settings founding comic book art.
+      <div class="art-card">
+        <img src="black and white glass of water.png" alt="Noir Style Glass of Water" />
+        <details>
+          <summary><strong>Noir Style Glass of Water</strong></summary>
+          <p>This piece is a study of a white charcoal drawing, depicting a glass of water with visible bubbles and reflections against a dark background. The contrast between the bright, detailed glass and the dark backdrop highlights the play of light and shadow, creating a serene atmosphere. 
+            Which I implemented through shading, reflection rendering, contrast enhancement with blending the white charcoal. This artwork demonstrates my proficiency with charcoal as a medium and my ability to capture intricate details and subtle lighting effects.</p>
+        </details>
+      </div>
 
-</p>
-      </details>
-    </div>
-    <div class="art-card">
-      <img src="tree in a lightbulb.jpg" alt="Tree in Lightbulb" />
-      <details>
-        <summary><strong>Tree in a lightbulb</strong></summary>
-        <p>.This sketch is a depiction of a tree growing inside a lightbulb. The drawing is in black and white, with branches and a part of the bulb broken, bringing a spot for the tree to grow. Symbolizing the connection between nature and technology. I demonstrated by using graphite pencils, with shading and blending, while applying line work throughout the piece. 
-          This demonstrates my ability to create intricate and meaningful illustrations through levels of building while creating a meaningful illustration of growth and discovery.</p>
-      </details>
-    </div>
-  </div>
+      <div class="art-card">
+        <img src="city drawing.png" alt="City with Potential" />
+        <details>
+          <summary><strong>City with Potential</strong></summary>
+          <p>This piece is a part of a series of custom cityscape drawings, showcasing my skills in abstract and sketch-style art. The use of geometric shapes and varied perspectives aims to create a very visually engaging and abstract representation of urban environments, through the use of graphite pencils and blending sticks. 
+            The shading, line work, and perspective drawing inspiration: The distorted and fragmented appearance is inspired by Cubism and the dynamic settings found in comic book art.</p>
+        </details>
+      </div>
 
+      <div class="art-card">
+        <img src="tree in a lightbulb.jpg" alt="Tree in Lightbulb" />
+        <details>
+          <summary><strong>Tree in a lightbulb</strong></summary>
+          <p>This sketch is a depiction of a tree growing inside a lightbulb. The drawing is in black and white, with branches and a part of the bulb broken, bringing a spot for the tree to grow. Symbolizing the connection between nature and technology. I demonstrated by using graphite pencils, with shading and blending, while applying line work throughout the piece. 
+            This demonstrates my ability to create intricate and meaningful illustrations through levels of building while creating a meaningful illustration of growth and discovery.</p>
+        </details>
+      </div>
+    </div>
 
-  <!-- Pop Art Section -->
     <h2>Pop Art</h2>
     <div class="section-divider divider-pop"></div>
     <div class="art-gallery">
@@ -151,42 +273,37 @@
         <img src="nike jordans artwork v2.jpg" alt="Nike Jordans OG" />
         <details>
           <summary><strong>Nike Jordans OG</strong></summary>
-        <p>This artwork is a study in pop art culture, where I highlight my oil pastel skills featuring the Nike Air Jordans 1 against a vibrant nature background. Using a palette of deep reds, bright blues, lush greens, warm oranges, and sunny yellows, I blended colors to capture the essence of these culturally iconic shoes.
-          While applying line mark-making to further elevate it in being creative and iconic to Michael Jordan. The striking visuals reflect both their bold design and their connection to urban culture, dynamically bridging fashion and art, which reflects my skill in designing pop art while being detailed in my art.
-
-</p>
-      </details>
-    </div>
-      
-   <div class="art-card">
+          <p>This artwork is a study in pop art culture, where I highlight my oil pastel skills featuring the Nike Air Jordans 1 against a vibrant nature background. Using a palette of deep reds, bright blues, lush greens, warm oranges, and sunny yellows, I blended colors to capture the essence of these culturally iconic shoes.
+            While applying line mark-making to further elevate it in being creative and iconic to Michael Jordan. The striking visuals reflect both their bold design and their connection to urban culture, dynamically bridging fashion and art, which reflects my skill in designing pop art while being detailed in my art.</p>
+        </details>
+      </div>
+        
+      <div class="art-card">
         <img src="deadpool sketchbook.png" alt="Deadpool Sketch" />
         <details>
           <summary><strong>Deadpool Sketch</strong></summary>
-        <p>This sketch is inspired by the 2024 film "Deadpool & Wolverine," capturing the vibrant and chaotic essence of the mercenary. I used a bold color palette infused with bright hues, particularly splashes of yellow, to symbolize Deadpool's playful unpredictability. 
-          Through color grading with colored pencils, I created depth and nuance, especially in the lively background. This approach showcases my skills in detailed character illustration and my appreciation for traditional drawing techniques and comic book art. Overall, the piece reflects the energetic spirit of the characters while highlighting my artistic abilities in creating a vibrant sketch.
-
-</p>
-      </details>
-    </div>
-    <div class="art-card">
-      <img src="invincible drawing.jpg" alt="Invincible" />
-      <details>
-        <summary><strong>Invincible</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-  </div>
+          <p>This sketch is inspired by the 2024 film "Deadpool & Wolverine," capturing the vibrant and chaotic essence of the mercenary. I used a bold color palette infused with bright hues, particularly splashes of yellow, to symbolize Deadpool's playful unpredictability. 
+            Through color grading with colored pencils, I created depth and nuance, especially in the lively background. This approach showcases my skills in detailed character illustration and my appreciation for traditional drawing techniques and comic book art. Overall, the piece reflects the energetic spirit of the characters while highlighting my artistic abilities in creating a vibrant sketch.</p>
+        </details>
+      </div>
 
       <div class="art-card">
-      <img src="Superman.jpg" alt="Superman" />
-      <details>
-        <summary><strong>Superman</strong></summary>
-        <p>*coming soon*</p>
-      </details>
-    </div>
-  </div>
+        <img src="invincible drawing.jpg" alt="Invincible" />
+        <details>
+          <summary><strong>Invincible</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
 
-  <!-- Physical Material Section -->
+      <div class="art-card">
+        <img src="Superman.jpg" alt="Superman" />
+        <details>
+          <summary><strong>Superman</strong></summary>
+          <p>*coming soon*</p>
+        </details>
+      </div>
+    </div>
+
     <h2>Physical Material</h2>
     <div class="section-divider divider-physical"></div>
     <div class="art-gallery">
@@ -204,4 +321,3 @@
   <script src="js/script.js"></script>
 </body>
 </html>
-
