@@ -1,135 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
-
 body {
-font-family: 'Oswald', 'Montserrat', Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #e6f7ff;
-color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e6f7ff;
+  color: #333;
 }
 
 /* Navigation */
 nav {
-background-color: #004080;
-padding: 10px 20px;
-display: flex;
-justify-content: center;
+  background-color: #004080;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 15px;
-font-size: 18px;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
 }
 
 nav a:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Main Heading */
 h1 {
-text-align: center;
-margin-top: 20px;
-font-size: 36px;
-color: #004080;
-}
-
-/* Category Section Styling */
-.category {
-margin: 40px 20px;
-max-width: 1200px;
-margin-left: auto;
-margin-right: auto;
-padding: 0 20px;
-}
-
-.category h2 {
-font-size: 32px;
-color: #003366;
-text-align: center;
-margin-top: 60px;
-margin-bottom: 20px;
-position: relative;
-padding-bottom: 10px;
-}
-
-/* Default section divider */
-.category h2::after {
-content: "";
-display: block;
-width: 60px;
-height: 4px;
-background-color: #004080;
-margin: 10px auto 0;
-border-radius: 2px;
-}
-
-/* Colored dividers by category */
-.category.digital h2::after {
-background-color: #0099cc;
-}
-
-.category.sketch h2::after {
-background-color: #333333;
-}
-
-.category.popart h2::after {
-background-color: #ff3366;
-}
-
-.category.material h2::after {
-background-color: #339933;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 36px;
+  color: #004080;
 }
 
 /* Artwork Card Styles */
 .art-gallery {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 30px;
-padding: 20px;
-justify-items: center;
-align-items: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 figure {
-width: 100%;
-max-width: 300px;
-border: 1px solid #ccc;
-border-radius: 8px;
-overflow: hidden;
-background-color: white;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 figure:hover {
-transform: scale(1.05);
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .art-gallery img {
-width: 100%;
-height: auto;
-display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 figcaption {
-padding: 10px;
-font-size: 14px;
-text-align: center;
-color: #555;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
 }
 
-/* Responsive for smaller screens */
+/* Category Section Styling */
+.category {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  position: relative;
+  border-top: 6px solid #0074cc; /* colored divider */
+  padding-top: 30px;
+}
+
+.category h2 {
+  font-size: 32px;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 10px;
+}
+
+/* Responsive (already handled by grid, but can tweak if needed) */
 @media (max-width: 768px) {
-.art-gallery {
-grid-template-columns: 1fr;
-gap: 20px;
+  .category h2 {
+    font-size: 28px;
+  }
 }
 
-figure {
-width: 100%;
-max-width: 90%;
-}
-}
