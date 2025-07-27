@@ -4,10 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/gallery.css" />
   <style>
-    /* Override styles to work with existing gallery.css */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    nav {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin: 40px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gallery {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .art-gallery {
       display: flex;
       overflow-x: auto;
@@ -15,7 +62,6 @@
       padding: 20px 0;
       margin-bottom: 60px;
       scroll-behavior: smooth;
-      grid-template-columns: none !important;
       position: relative;
     }
 
@@ -41,71 +87,81 @@
       min-width: 350px;
       max-width: 350px;
       flex-shrink: 0;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 16px;
       overflow: hidden;
       background-color: #fff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .art-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .art-card img {
       width: 100%;
-      height: 220px;
+      height: 240px;
       object-fit: cover;
       display: block;
       transition: transform 0.3s ease;
     }
 
     .art-card:hover img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .art-card details {
-      padding: 15px;
-      font-family: 'Oswald', 'Montserrat', sans-serif;
-      background-color: #f9f9f9;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin: 10px;
+      padding: 20px;
+      background-color: #fff;
     }
 
     .art-card summary {
       cursor: pointer;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #333;
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #2c3e50;
       outline: none;
-      font-size: 1.2rem;
       transition: color 0.3s ease;
+      list-style: none;
+    }
+
+    .art-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .art-card summary::before {
+      content: "▶";
+      display: inline-block;
+      margin-right: 8px;
+      transition: transform 0.3s ease;
+      font-size: 0.8em;
+    }
+
+    .art-card details[open] summary::before {
+      transform: rotate(90deg);
     }
 
     .art-card details[open] summary {
-      color: #0056b3;
+      color: #667eea;
     }
 
     .art-card summary:hover {
-      color: #0056b3;
+      color: #667eea;
     }
 
     .art-card p {
-      line-height: 1.7;
-      color: #444;
-      margin-top: 10px;
-      transition: max-height 0.3s ease;
+      line-height: 1.8;
+      color: #555;
+      margin-top: 12px;
       font-size: 0.95rem;
+      text-align: justify;
     }
 
-    /* Navigation arrows for easier scrolling */
     .category {
       margin: 80px auto;
-      max-width: 1200px;
-      padding: 0 20px;
       position: relative;
     }
 
@@ -113,7 +169,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 86, 179, 0.8);
+      background: rgba(102, 126, 234, 0.9);
       color: white;
       border: none;
       border-radius: 50%;
@@ -123,12 +179,18 @@
       cursor: pointer;
       z-index: 10;
       transition: all 0.3s ease;
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .scroll-arrow:hover {
-      background: rgba(0, 86, 179, 1);
+      background: rgba(102, 126, 234, 1);
       transform: translateY(-50%) scale(1.1);
+    }
+
+    .scroll-arrow:focus {
+      outline: 2px solid #ffd700;
+      outline-offset: 2px;
     }
 
     .scroll-arrow.left {
@@ -140,43 +202,67 @@
     }
 
     .category:hover .scroll-arrow {
-      display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .category h2 {
-      font-size: 2.2rem;
-      color: #003366;
+      font-size: 2.5rem;
+      color: #2c3e50;
       text-align: center;
       margin-bottom: 40px;
       position: relative;
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
 
     .category h2::after {
       content: "";
       display: block;
-      width: 60px;
+      width: 80px;
       height: 4px;
-      background-color: #004080;
-      margin: 10px auto 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 15px auto 0;
       border-radius: 2px;
     }
 
     .category.digital h2::after {
-      background-color: #0099cc;
+      background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
     }
 
     .category.sketch h2::after {
-      background-color: #333333;
+      background: linear-gradient(135deg, #434343 0%, #000000 100%);
     }
 
     .category.popart h2::after {
-      background-color: #ff3366;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
     }
 
     .category.material h2::after {
-      background-color: #339933;
+      background: linear-gradient(135deg, #55a3ff 0%, #003d82 100%);
+    }
+
+    .coming-soon {
+      color: #999;
+      font-style: italic;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Error handling for missing images */
+    .art-card img[src=""],
+    .art-card img:not([src]) {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .art-card img[src=""]:after,
+    .art-card img:not([src]):after {
+      content: "Image not available";
+      color: #666;
+      font-size: 1rem;
     }
 
     /* Responsive design */
@@ -191,7 +277,7 @@
       }
 
       .category h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       .category {
@@ -202,6 +288,10 @@
         width: 40px;
         height: 40px;
         font-size: 16px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
       }
     }
 
@@ -216,21 +306,39 @@
       }
 
       .category h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
 
       .category {
         padding: 0 15px;
         margin: 50px auto;
       }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Loading animation */
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: calc(200px + 100%) 0; }
+    }
+
+    .loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200px 100%;
+      animation: shimmer 1.5s infinite;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
+    <div style="text-align: center;">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
   <h1>Gallery</h1>
@@ -239,198 +347,177 @@
 
     <div class="category digital">
       <h2>Digital Design</h2>
-      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)">‹</button>
-      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)">›</button>
+      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)" aria-label="Scroll left">‹</button>
+      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)" aria-label="Scroll right">›</button>
       <div class="art-gallery">
-      <div class="art-card">
-        <img src="lloyds v3.png" alt="Two Green Ninjas" />
-        <details>
-          <summary><strong>Two Green Ninjas</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
-      
-      <div class="art-card">
-        <img src="berlin postcard.jpg" alt="Berlin Postcard" />
-        <details>
-          <summary><strong>Berlin Postcard</strong></summary>
-          <p>This digital design presents a postcard of Berlin, showcasing my graphic design skills through capturing iconic landmarks in the world. The cityscape highlights notable landmarks and captures the essence of Berlin through an orange-hued artistic lens. 
-            While the landmarks remain recognizable, through the application of color grading, photo manipulation, and digital illustration, done in Adobe Photoshop and Illustrator, the design effectively merges historical and contemporary elements, demonstrating my proficiency with digital tools.</p>
-        </details>
-      </div>
+        <div class="art-card">
+          <img src="lloyds v3.png" alt="Two Green Ninjas digital artwork" loading="lazy" />
+          <details>
+            <summary>Two Green Ninjas</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
         
-      <div class="art-card">
-        <img src="the lego batman.png" alt="A symbol out of the shadows" />
-        <details>
-          <summary><strong>A symbol out of the shadows</strong></summary>
-          <p>This design is inspired by the 2022 film, The Batman, and explores the contrast between lurking in the shadows and confronting harsh realities. 
-            The dark figure set against a vivid red background symbolizes the struggles many individuals face when they hide their true selves. I emphasized applying light and dark gradients while creating a paper effect on the design through Adobe Photoshop to further elevate the meaning. This piece showcases my skills in graphic design, demonstrating my proficiency in digital design and composition through 2D elements in Adobe Photoshop.</p>
-        </details>
-      </div>
-      
-      <div class="art-card">
-        <img src="Curry poster.png" alt="Stephen Curry" />
-        <details>
-          <summary><strong>Stephen Curry</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
-      
-      <div class="art-card">
-        <img src="miles atsv art comic.png" alt="Spider-Man in the spots void" />
-        <details>
-          <summary><strong>Spider-Man in the spots void</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
+        <div class="art-card">
+          <img src="berlin postcard.jpg" alt="Berlin Postcard digital design" loading="lazy" />
+          <details>
+            <summary>Berlin Postcard</summary>
+            <p>This digital design presents a postcard of Berlin, showcasing my graphic design skills through capturing iconic landmarks in the world. The cityscape highlights notable landmarks and captures the essence of Berlin through an orange-hued artistic lens. While the landmarks remain recognizable, through the application of color grading, photo manipulation, and digital illustration, done in Adobe Photoshop and Illustrator, the design effectively merges historical and contemporary elements, demonstrating my proficiency with digital tools.</p>
+          </details>
+        </div>
+          
+        <div class="art-card">
+          <img src="the lego batman.png" alt="A symbol out of the shadows Batman artwork" loading="lazy" />
+          <details>
+            <summary>A symbol out of the shadows</summary>
+            <p>This design is inspired by the 2022 film, The Batman, and explores the contrast between lurking in the shadows and confronting harsh realities. The dark figure set against a vivid red background symbolizes the struggles many individuals face when they hide their true selves. I emphasized applying light and dark gradients while creating a paper effect on the design through Adobe Photoshop to further elevate the meaning. This piece showcases my skills in graphic design, demonstrating my proficiency in digital design and composition through 2D elements in Adobe Photoshop.</p>
+          </details>
+        </div>
+        
+        <div class="art-card">
+          <img src="Curry poster.png" alt="Stephen Curry sports poster" loading="lazy" />
+          <details>
+            <summary>Stephen Curry</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
+        
+        <div class="art-card">
+          <img src="miles atsv art comic.png" alt="Spider-Man in the spots void comic art" loading="lazy" />
+          <details>
+            <summary>Spider-Man in the spots void</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
 
-      <div class="art-card">
-        <img src="a6ce2810-058b-48f9-8a08-6b2a65bf5f3e.1280x1280.jpg" alt="Reach the sky" />
-        <details>
-          <summary><strong>Reach the sky</strong></summary>
-          <p>This design highlights my expertise in digital illustration and typography. The gradient background, derived from a soft pastel artwork, transitions from blue to orange, symbolizing the sunset and sky, which conveys the endless possibilities that lie ahead. The silhouetted figure with arms raised represents triumph and aspiration.
-            By blending gradients and creating silhouettes, I draw inspiration from my soft pastel pieces. This approach showcases my ability to reference other materials while effectively working with digital mediums like Adobe Illustrator to create compelling digital artwork.</p>
-        </details>
+        <div class="art-card">
+          <img src="a6ce2810-058b-48f9-8a08-6b2a65bf5f3e.1280x1280.jpg" alt="Reach the sky inspirational artwork" loading="lazy" />
+          <details>
+            <summary>Reach the sky</summary>
+            <p>This design highlights my expertise in digital illustration and typography. The gradient background, derived from a soft pastel artwork, transitions from blue to orange, symbolizing the sunset and sky, which conveys the endless possibilities that lie ahead. The silhouetted figure with arms raised represents triumph and aspiration. By blending gradients and creating silhouettes, I draw inspiration from my soft pastel pieces. This approach showcases my ability to reference other materials while effectively working with digital mediums like Adobe Illustrator to create compelling digital artwork.</p>
+          </details>
+        </div>
+
+        <div class="art-card">
+          <img src="Lego man in ts.jpg" alt="Lego man in Times Square digital artwork" loading="lazy" />
+          <details>
+            <summary>Lego man in Times Square</summary>
+            <p>This digital design captures the iconic energy and vibrancy of Times Square through the imaginative and nostalgic perspective of a Lego figure. The neon lights and colorful signs of the area create a dynamic background that showcases my skills in digital illustration and visual storytelling. By applying color grading techniques and various effects, I've enhanced the piece to reflect my ability to blend pop culture with real-world settings. This digital design highlights my proficiency with digital tools and my creative approach to visual composition.</p>
+          </details>
+        </div>
       </div>
-    </div>
     </div>
 
     <div class="category sketch">
-      <h2>Black & White Sketch</h2>
-      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)">‹</button>
-      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)">›</button>
+      <h2>Black & White</h2>
+      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)" aria-label="Scroll left">‹</button>
+      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)" aria-label="Scroll right">›</button>
       <div class="art-gallery">
-      <div class="art-card">
-        <img src="turtle drawing black and white tmnt.jpg" alt="Noir Wooden Raphael" />
-        <details>
-          <summary><strong>Noir Wooden Raphael</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
+        <div class="art-card">
+          <img src="turtle drawing black and white tmnt.jpg" alt="Noir Wooden Raphael sketch" loading="lazy" />
+          <details>
+            <summary>Noir Wooden Raphael</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
 
-      <div class="art-card">
-        <img src="black and white glass of water.png" alt="Noir Style Glass of Water" />
-        <details>
-          <summary><strong>Noir Style Glass of Water</strong></summary>
-          <p>This piece is a study of a white charcoal drawing, depicting a glass of water with visible bubbles and reflections against a dark background. The contrast between the bright, detailed glass and the dark backdrop highlights the play of light and shadow, creating a serene atmosphere. 
-            Which I implemented through shading, reflection rendering, contrast enhancement with blending the white charcoal. This artwork demonstrates my proficiency with charcoal as a medium and my ability to capture intricate details and subtle lighting effects.</p>
-        </details>
-      </div>
+        <div class="art-card">
+          <img src="black and white glass of water.png" alt="Noir Style Glass of Water charcoal drawing" loading="lazy" />
+          <details>
+            <summary>Noir Style Glass of Water</summary>
+            <p>This piece is a study of a white charcoal drawing, depicting a glass of water with visible bubbles and reflections against a dark background. The contrast between the bright, detailed glass and the dark backdrop highlights the play of light and shadow, creating a serene atmosphere. Which I implemented through shading, reflection rendering, contrast enhancement with blending the white charcoal. This artwork demonstrates my proficiency with charcoal as a medium and my ability to capture intricate details and subtle lighting effects.</p>
+          </details>
+        </div>
 
-      <div class="art-card">
-        <img src="city drawing.png" alt="City with Potential" />
-        <details>
-          <summary><strong>City with Potential</strong></summary>
-          <p>This piece is a part of a series of custom cityscape drawings, showcasing my skills in abstract and sketch-style art. The use of geometric shapes and varied perspectives aims to create a very visually engaging and abstract representation of urban environments, through the use of graphite pencils and blending sticks. 
-            The shading, line work, and perspective drawing inspiration: The distorted and fragmented appearance is inspired by Cubism and the dynamic settings found in comic book art.</p>
-        </details>
-      </div>
+        <div class="art-card">
+          <img src="city drawing.png" alt="City with Potential abstract cityscape" loading="lazy" />
+          <details>
+            <summary>City with Potential</summary>
+            <p>This piece is a part of a series of custom cityscape drawings, showcasing my skills in abstract and sketch-style art. The use of geometric shapes and varied perspectives aims to create a very visually engaging and abstract representation of urban environments, through the use of graphite pencils and blending sticks. The shading, line work, and perspective drawing inspiration: The distorted and fragmented appearance is inspired by Cubism and the dynamic settings found in comic book art.</p>
+          </details>
+        </div>
 
-      <div class="art-card">
-        <img src="tree in a lightbulb.jpg" alt="Tree in Lightbulb" />
-        <details>
-          <summary><strong>Tree in a lightbulb</strong></summary>
-          <p>This sketch is a depiction of a tree growing inside a lightbulb. The drawing is in black and white, with branches and a part of the bulb broken, bringing a spot for the tree to grow. Symbolizing the connection between nature and technology. I demonstrated by using graphite pencils, with shading and blending, while applying line work throughout the piece. 
-            This demonstrates my ability to create intricate and meaningful illustrations through levels of building while creating a meaningful illustration of growth and discovery.</p>
-        </details>
+        <div class="art-card">
+          <img src="tree in a lightbulb.jpg" alt="Tree in lightbulb conceptual sketch" loading="lazy" />
+          <details>
+            <summary>Tree in a lightbulb</summary>
+            <p>This sketch is a depiction of a tree growing inside a lightbulb. The drawing is in black and white, with branches and a part of the bulb broken, bringing a spot for the tree to grow. Symbolizing the connection between nature and technology. I demonstrated by using graphite pencils, with shading and blending, while applying line work throughout the piece. This demonstrates my ability to create intricate and meaningful illustrations through levels of building while creating a meaningful illustration of growth and discovery.</p>
+          </details>
+        </div>
+
+        <div class="art-card">
+          <img src="spectacual symbiotes.jpg" alt="Spectacular symbiote host artwork" loading="lazy" />
+          <details>
+            <summary>Spectacular symbiote host</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
       </div>
-    </div>
     </div>
 
     <div class="category popart">
       <h2>Pop Art</h2>
-      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)">‹</button>
-      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)">›</button>
+      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)" aria-label="Scroll left">‹</button>
+      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)" aria-label="Scroll right">›</button>
       <div class="art-gallery">
-      <div class="art-card">
-        <img src="nike jordans artwork v2.jpg" alt="Nike Jordans OG" />
-        <details>
-          <summary><strong>Nike Jordans OG</strong></summary>
-          <p>This artwork is a study in pop art culture, where I highlight my oil pastel skills featuring the Nike Air Jordans 1 against a vibrant nature background. Using a palette of deep reds, bright blues, lush greens, warm oranges, and sunny yellows, I blended colors to capture the essence of these culturally iconic shoes.
-            While applying line mark-making to further elevate it in being creative and iconic to Michael Jordan. The striking visuals reflect both their bold design and their connection to urban culture, dynamically bridging fashion and art, which reflects my skill in designing pop art while being detailed in my art.</p>
-        </details>
-      </div>
-        
-      <div class="art-card">
-        <img src="deadpool sketchbook.png" alt="Deadpool Sketch" />
-        <details>
-          <summary><strong>Deadpool Fight Mode</strong></summary>
-          <p>This sketch is inspired by the 2024 film "Deadpool & Wolverine," capturing the vibrant and chaotic essence of the mercenary. I used a bold color palette infused with bright hues, particularly splashes of yellow, to symbolize Deadpool's playful unpredictability. 
-            Through color grading with colored pencils, I created depth and nuance, especially in the lively background. This approach showcases my skills in detailed character illustration and my appreciation for traditional drawing techniques and comic book art. Overall, the piece reflects the energetic spirit of the characters while highlighting my artistic abilities in creating a vibrant sketch.</p>
-        </details>
-      </div>
-
-      <div class="art-card">
-        <img src="invincible drawing.jpg" alt="Invincible" />
-        <details>
-          <summary><strong>Invincible</strong></summary>
-          <p>This vibrant mixed media pop art piece features Invincible, the main character from the TV show and comic book series by Robert Kirkman, Ryan Ottley, and Cory Walker. He is captured in a moment of exhilarating motion against a fiery background of reds, oranges, and yellows, reflecting the dangers he faces and the choices he has to make as his role in the universe. The sharp silhouette of his cool blue and yellow suit creates a striking contrast. 
-            His forward-leaning posture and windswept accessories suggest high speed, resembling a superhero in flight or a runner in action, which is emphasized through the bold outline of his figure. With the vibrant colors, dynamic pose, and layered textures, the piece lends an electric, cinematic quality, celebrating determination, power, and the thrill of adrenaline. Which gives the piece an electric, cinematic quality, celebrating determination, power, and the thrill of adrenaline from Invincible.</p>
-        </details>
-      </div>
-
-      <div class="art-card">
-        <img src="Superman.jpg" alt="Superman" />
-        <details>
-          <summary><strong>Superman</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
-    </div>
-    </div>
+        <div class="art-card">
+          <img src="nike jordans artwork v2.jpg" alt="Nike Jordans OG pop art" loading="lazy" />
+          <details>
+            <summary>Nike Jordans OG</summary>
+            <p>This artwork is a study in pop art culture, where I highlight my oil pastel skills featuring the Nike Air Jordans 1 against a vibrant nature background. Using a palette of deep reds, bright blues, lush greens, warm oranges, and sunny yellows, I blended colors to capture the essence of these culturally iconic shoes. While applying line mark-making to further elevate it in being creative and iconic to Michael Jordan. The striking visuals reflect both their bold design and their connection to urban culture, dynamically bridging fashion and art, which reflects my skill in designing pop art while being detailed in my art.</p>
+          </details>
+        </div>
+          
+        <div class="art-card">
+          <img src="deadpool sketchbook.png" alt="Deadpool Fight Mode pop art sketch" loading="lazy" />
+          <details>
+            <summary>Deadpool Fight Mode</summary>
+            <p>This sketch is inspired by the 2024 film "Deadpool & Wolverine," capturing the vibrant and chaotic essence of the mercenary. I used a bold color palette infused with bright hues, particularly splashes of yellow, to symbolize Deadpool's playful unpredictability. Through color grading with colored pencils, I created depth and nuance, especially in the lively background. This approach showcases my skills in detailed character illustration and my appreciation for traditional drawing techniques and comic book art. Overall, the piece reflects the energetic spirit of the characters while highlighting my artistic abilities in creating a vibrant sketch.</p>
+          </details>
+        </div>
 
         <div class="art-card">
-        <img src="Lego man in ts.jpg" alt="Lego man in Times Square" />
-        <details>
-          <summary><strong>Lego man in Times Square</strong></summary>
-          <p>This digital design captures the iconic energy and vibrancy of Times Square through the imaginative and nostalgic perspective of a Lego figure. The neon lights and colorful signs of the area create a dynamic background that showcases my skills in digital illustration and visual storytelling. By applying color grading techniques and various effects, I've enhanced the piece to reflect my ability to blend pop culture with real-world settings.
-            This digital design highlights my proficiency with digital tools and my creative approach to visual composition.
-</p>
-        </details>
+          <img src="invincible drawing.jpg" alt="Invincible superhero pop art" loading="lazy" />
+          <details>
+            <summary>Invincible</summary>
+            <p>This vibrant mixed media pop art piece features Invincible, the main character from the TV show and comic book series by Robert Kirkman, Ryan Ottley, and Cory Walker. He is captured in a moment of exhilarating motion against a fiery background of reds, oranges, and yellows, reflecting the dangers he faces and the choices he has to make as his role in the universe. The sharp silhouette of his cool blue and yellow suit creates a striking contrast. His forward-leaning posture and windswept accessories suggest high speed, resembling a superhero in flight or a runner in action, which is emphasized through the bold outline of his figure. With the vibrant colors, dynamic pose, and layered textures, the piece lends an electric, cinematic quality, celebrating determination, power, and the thrill of adrenaline. Which gives the piece an electric, cinematic quality, celebrating determination, power, and the thrill of adrenaline from Invincible.</p>
+          </details>
+        </div>
+
+        <div class="art-card">
+          <img src="Superman.jpg" alt="Superman pop art illustration" loading="lazy" />
+          <details>
+            <summary>Superman</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
       </div>
     </div>
-    </div>
-
-    
 
     <div class="category material">
       <h2>Physical Material</h2>
-      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)">‹</button>
-      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)">›</button>
+      <button class="scroll-arrow left" onclick="scrollGallery(this, -1)" aria-label="Scroll left">‹</button>
+      <button class="scroll-arrow right" onclick="scrollGallery(this, 1)" aria-label="Scroll right">›</button>
       <div class="art-gallery">
-      <div class="art-card">
-        <img src="Aztec animals.jpg" alt="Aztec Animals" />
-        <details>
-          <summary><strong>Aztec Animals</strong></summary>
-          <p>This piece showcases my application of the repousse technique on aluminum, where I skillfully pushed and shaped the material to create designs inspired by various Aztec animals and birds. To enhance the work, I coated the aluminum with black acrylic paint and gently buffed it with a damp cloth, allowing for the intricate details to stand out. 
-            This finishing touch not only elevated the piece but also connected it more closely to the rich artistic culture of the Aztecs. Through this artwork, I demonstrate my ability to manipulate physical materials to create truly unique creations.
-</p>
-        </details>
+        <div class="art-card">
+          <img src="Aztec animals.jpg" alt="Aztec Animals aluminum repousse artwork" loading="lazy" />
+          <details>
+            <summary>Aztec Animals</summary>
+            <p>This piece showcases my application of the repousse technique on aluminum, where I skillfully pushed and shaped the material to create designs inspired by various Aztec animals and birds. To enhance the work, I coated the aluminum with black acrylic paint and gently buffed it with a damp cloth, allowing for the intricate details to stand out. This finishing touch not only elevated the piece but also connected it more closely to the rich artistic culture of the Aztecs. Through this artwork, I demonstrate my ability to manipulate physical materials to create truly unique creations.</p>
+          </details>
+        </div>
+
+        <div class="art-card">
+          <img src="cubist Messi FC.png" alt="Cubist FC Barcelona Messi physical artwork" loading="lazy" />
+          <details>
+            <summary>Cubist FC Barcelona Messi</summary>
+            <div class="coming-soon">Coming soon</div>
+          </details>
+        </div>
       </div>
-    </div>
     </div>
 
   </div>
-
-    <div class="art-card">
-        <img src="spectacual symbiotes.jpg" alt="SS" />
-        <details>
-          <summary><strong>Spectacual symbiote host</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
-    </div>
-    </div>
-
-  <div class="art-card">
-        <img src="cubist Messi FC.png" alt="Messi v1" />
-        <details>
-          <summary><strong>Cubist FC Barcelona Messi</strong></summary>
-          <p>*coming soon*</p>
-        </details>
-      </div>
-    </div>
-    </div>
 
   <script>
     function scrollGallery(button, direction) {
@@ -441,7 +528,32 @@
         behavior: 'smooth'
       });
     }
+
+    // Keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+      if (e.target.classList.contains('scroll-arrow')) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.target.click();
+        }
+      }
+    });
+
+    // Error handling for missing images
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.art-card img');
+      images.forEach(img => {
+        img.addEventListener('error', function() {
+          this.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+          this.style.display = 'flex';
+          this.style.alignItems = 'center';
+          this.style.justifyContent = 'center';
+          this.style.color = '#666';
+          this.style.fontSize = '1rem';
+          this.textContent = 'Image not available';
+        });
+      });
+    });
   </script>
-  <script src="js/script.js"></script>
 </body>
 </html>
