@@ -88,6 +88,129 @@ h1 {
   background-color: #339933;
 }
 
+/* === Art Grid Layout === */
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  padding: 0 10px;
+}
+
+/* === Art Card Styling === */
+.art-card {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e8f0;
+  position: relative;
+}
+
+.art-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* === Art Card Images === */
+.art-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.art-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* === Details and Summary Styling === */
+.art-card details {
+  padding: 20px;
+}
+
+.art-card summary {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #003366;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+  list-style: none;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Custom arrow for summary */
+.art-card summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+  color: #0056b3;
+}
+
+.art-card details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.art-card summary:hover {
+  color: #0056b3;
+}
+
+/* Remove default marker */
+.art-card summary::-webkit-details-marker {
+  display: none;
+}
+
+/* === Description Text === */
+.art-card p {
+  font-family: 'Montserrat', sans-serif;
+  color: #555;
+  line-height: 1.7;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+/* === Coming Soon Styling === */
+.coming-soon {
+  background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+  color: #333;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* === Category-specific Card Accents === */
+.category.digital .art-card {
+  border-left: 4px solid #0099cc;
+}
+
+.category.sketch .art-card {
+  border-left: 4px solid #333333;
+}
+
+.category.popart .art-card {
+  border-left: 4px solid #ff3366;
+}
+
+.category.material .art-card {
+  border-left: 4px solid #339933;
+}
+
 /* === Responsive Typography === */
 @media (max-width: 768px) {
   h1 {
@@ -105,6 +228,19 @@ h1 {
   
   .category {
     margin: 60px auto;
+  }
+  
+  .art-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .art-card img {
+    height: 220px;
+  }
+  
+  .art-card summary {
+    font-size: 1.2rem;
   }
 }
 
@@ -125,6 +261,27 @@ h1 {
   .category {
     padding: 0 15px;
     margin: 50px auto;
+  }
+  
+  .art-grid {
+    padding: 0;
+    gap: 20px;
+  }
+  
+  .art-card details {
+    padding: 15px;
+  }
+  
+  .art-card img {
+    height: 200px;
+  }
+  
+  .art-card summary {
+    font-size: 1.1rem;
+  }
+  
+  .art-card p {
+    font-size: 0.9rem;
   }
 }
 
@@ -212,3 +369,37 @@ h1 {
   to { opacity: 1; }
 }
 
+/* === Scroll Behavior === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Focus States for Accessibility === */
+.art-card:focus-within {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.art-card summary:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* === Loading State for Images === */
+.art-card img {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.art-card img[src=""] {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+.art-card img[src=""]:after {
+  content: "Image loading...";
+}
