@@ -127,3 +127,88 @@ h1 {
     margin: 50px auto;
   }
 }
+
+/* === Lightbox Modal === */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999 !important;
+  left: 0;
+  top: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.lightbox-content {
+  position: relative !important;
+  max-width: calc(100vw - 40px) !important;
+  max-height: calc(100vh - 80px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+.lightbox-content img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 10px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  display: block !important;
+}
+
+.close {
+  position: fixed !important;
+  top: 20px !important;
+  right: 30px !important;
+  color: #ffffff !important;
+  font-size: 40px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: color 0.3s ease !important;
+  z-index: 10000 !important;
+  background: none !important;
+  border: none !important;
+  line-height: 1 !important;
+}
+
+.close:hover,
+.close:focus {
+  color: #ffcc00 !important;
+  text-decoration: none !important;
+}
+
+.lightbox-info {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  color: white !important;
+  text-align: center !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  padding: 10px 20px !important;
+  border-radius: 20px !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  max-width: calc(100vw - 40px) !important;
+  z-index: 10000 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
